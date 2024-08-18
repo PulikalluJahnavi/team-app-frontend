@@ -1,0 +1,68 @@
+<div class="container">
+  <header>
+    <h1>AI-TEAM-MANAGEMENT</h1>
+    <div class="header-actions">
+      <label class="switch">
+        <input type="checkbox" (change)="toggleTheme()">
+        <span class="slider"></span>
+      </label>
+      <button mat-button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="create-team-wrapper">
+    <button 
+      mat-raised-button 
+      color="primary" 
+      (click)="showForm = !showForm"
+      matTooltip="Create a new AI team where you can assign agents and define team objectives to achieve your goals.">
+      {{ showForm ? 'Close Form' : 'Create New Team' }}
+    </button>
+  </div>
+
+  <div class="dashboard">
+    <h2>Team Dashboard</h2>
+    <app-team-form *ngIf="showForm" (teamCreated)="addTeam($event)"></app-team-form>
+
+    <mat-card class="team-card" *ngFor="let team of teams">
+      <mat-card-title>{{ team.name }}</mat-card-title>
+      <mat-card-content>
+        <p>{{ team.objective }}</p>
+        <h4>Agents:</h4>
+        <ul class="agents-list">
+          <li *ngFor="let agent of team.agents">
+            <span class="agent-initial">{{ agent.name.charAt(0) }}</span>
+            <span (click)="showAgentDescription(agent)"
+                  class="agent-name"
+                  [attr.title]="'Click to know what ' + agent.name + ' does'">
+              {{ agent.name }}
+            </span>
+            <span class="agent-skill">{{ agent.skill }}</span>
+            <button mat-button (click)="toggleTaskForm(agent)">Assign Task</button>
+          </li>
+        </ul>
+        <p *ngIf="!team.agents.length">No agents assigned to this team.</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Modal for Agent Description -->
+  <div *ngIf="selectedAgent" class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ selectedAgent.name }}</h3>
+      <p>{{ selectedAgent.description }}</p>
+      <button (click)="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Task Assignment Form -->
+  <div *ngIf="showTaskForm" class="modal-backdrop" (click)="toggleTaskForm(null)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>Assign Task to {{ currentAgentForTask?.name }}</h3>
+      <input type="text" placeholder="Task Title" #taskTitle>
+      <textarea placeholder="Task Description" #taskDescription></textarea>
+      <button (click)="assignTaskToAgent({ title: taskTitle.value, description: taskDescription.value })">Assign Task</button>
+      <button (click)="toggleTaskForm(null)">Cancel</button>
+    </div>
+  </div>
+</div>

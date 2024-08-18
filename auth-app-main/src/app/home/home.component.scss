@@ -1,0 +1,262 @@
+/* src/app/home/home.component.scss */
+
+/* General Styling */
+body {
+  background-color: #1a1a2e; /* Dark background */
+  color: #e0e0e0; /* Light grey text */
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #162447, #1f4068); /* Subtle dark blue gradient */
+  padding: 15px 30px;
+  color: #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    /* Style for the toggle switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+
+      input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #3e3e3e; /* Dark grey background */
+        transition: .4s;
+        border-radius: 34px;
+
+        &:before {
+          position: absolute;
+          content: "";
+          height: 20px;
+          width: 20px;
+          border-radius: 50%;
+          left: 2px;
+          bottom: 2px;
+          background-color: white;
+          transition: .4s;
+        }
+      }
+
+      input:checked + .slider {
+        background-color: #0f4c75; /* Deep teal background when checked */
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+    }
+  }
+
+  .logout-btn {
+    background-color: #0f4c75; /* Deep teal button */
+    color: #e0e0e0;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #3282b8; /* Slightly lighter teal for hover */
+    }
+  }
+}
+
+.create-team-wrapper {
+  margin-top: 15px;
+}
+
+.dashboard {
+  margin-top: 30px;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff; /* Bright white text for clarity */
+    font-size: 28px; /* Larger font size */
+    font-weight: bold;
+
+    /* Gradient outline effect using text-shadow */
+    text-shadow:
+      -1px -1px 0 #0f4c75, /* Top left shadow in deep teal */
+      1px -1px 0 #3282b8,  /* Top right shadow in lighter teal */
+      -1px 1px 0 #3282b8,  /* Bottom left shadow in lighter teal */
+      1px 1px 0 #0f4c75;   /* Bottom right shadow in deep teal */
+  }
+
+  .team-card {
+    background-color: #212b45; /* Dark navy card background */
+    color: #e0e0e0;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .team-card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: linear-gradient(135deg, #3282b8, #0f4c75); /* Gradient background */
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+
+    h4 {
+      text-align: left;
+      margin-left: 0;
+      color: #e0e0e0;
+      margin-bottom: 15px;
+    }
+  }
+
+  .agents-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .agent-initial {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #3282b8, #0f4c75); /* Gradient background */
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-right: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .agent-name {
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-right: auto;
+        background: linear-gradient(135deg, #3282b8, #0f4c75); /* Gradient text */
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        transition: color 0.3s ease;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      .agent-skill {
+        background: linear-gradient(135deg, #3282b8, #0f4c75); /* Gradient background */
+        color: #e0e0e0;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        margin-left: 15px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+/* Modal Styling */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #212b45;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+
+  h3 {
+    margin-top: 0;
+    color: #e0e0e0;
+  }
+
+  p {
+    color: #e0e0e0;
+  }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #3282b8, #0f4c75); /* Gradient background */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0f4c75;
+    }
+  }
+}

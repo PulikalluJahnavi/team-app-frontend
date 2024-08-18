@@ -1,0 +1,74 @@
+.team-form-container {
+    background-color: #1b263b; /* Darker navy background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Darker shadow for depth */
+    max-width: 600px;
+    margin: 20px auto;
+  
+    h2 {
+      color: #e0e0e0; /* Light grey for the heading */
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 15px;
+  
+      input, textarea {
+        color: #e0e0e0 !important; /* Light grey for input text */
+      }
+  
+      mat-label {
+        color: #468faf !important; /* Teal-blue for labels */
+      }
+  
+      .mat-placeholder {
+        color: #90a4ae !important; /* Medium gray for placeholder text */
+      }
+  
+      .mat-input-element {
+        background-color: #2c3e50; /* Darker blue-grey background for inputs */
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #468faf; /* Teal-blue border for better visibility */
+      }
+  
+      .mat-form-field-outline {
+        color: #468faf; /* Teal-blue outline when focused */
+      }
+  
+      .mat-hint {
+        color: #468faf !important; /* Teal-blue color for hint text */
+      }
+    }
+  
+    .agent-input h3 {
+      color: #e0e0e0; /* Light grey for section heading */
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+  
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+  
+      button {
+        width: 48%;
+        background: linear-gradient(135deg, #468faf, #1b4965); /* Gradient teal to dark blue */
+        color: #ffffff; /* White text for contrast */
+        border-radius: 4px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #1b4965; /* Darker blue on hover */
+        }
+      }
+    }
+  }
+  

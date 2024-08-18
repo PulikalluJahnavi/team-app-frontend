@@ -1,0 +1,19 @@
+<div class="team-form-container">
+    <h2>Create a New AI Team</h2>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Team Name</mat-label>
+        <input matInput placeholder="Enter team name" [(ngModel)]="teamName" name="teamName" required>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline">
+        <mat-label>Team Objective</mat-label>
+        <textarea matInput placeholder="Define the team objective" [(ngModel)]="teamObjective" name="teamObjective" required></textarea>
+      </mat-form-field>
+  
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit">Create Team</button>
+        <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+</div>
